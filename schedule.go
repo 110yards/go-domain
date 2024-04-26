@@ -6,7 +6,6 @@ type Schedule struct {
 	Year       int            `json:"year"`
 	Hash       string         `json:"hash"`
 	SourceName string         `json:"source_name"`
-	SourceUrl  string         `json:"source_url"`
 	Games      []ScheduleGame `json:"games"`
 	ByeWeeks   ByeWeeks       `json:"bye_weeks"`
 }
