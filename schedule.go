@@ -1,6 +1,9 @@
 package domain
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 type Schedule struct {
 	Year       int            `json:"year"`
@@ -11,16 +14,56 @@ type Schedule struct {
 }
 
 type ScheduleGame struct {
-	GameId     string    `json:"gameId"`
+	GameId     string    `json:"game_id"`
 	SourceName string    `json:"source_name"`
-	SourceUrl  string    `json:"source_url"`
+	SourceId   string    `json:"source_id"`
 	DateStart  time.Time `json:"date_start"`
 	GameNumber int       `json:"game_number"`
 	WeekNumber int       `json:"week_number"`
-	GameType   string    `json:"game_type"`
+	GameType   GameType  `json:"game_type"`
 	AwayAbbr   string    `json:"away_abbr"`
 	HomeAbbr   string    `json:"home_abbr"`
 }
+
+func CreateScheduleGame(
+	dateStart time.Time,
+	gameNumber int,
+	weekNumber int,
+	gameType GameType,
+	awayAbbr string,
+	homeAbbr string,
+	sourceName string,
+	sourceId string,
+) ScheduleGame {
+	game := ScheduleGame{
+		DateStart:  dateStart,
+		GameNumber: gameNumber,
+		WeekNumber: weekNumber,
+		GameType:   gameType,
+		AwayAbbr:   awayAbbr,
+		HomeAbbr:   homeAbbr,
+		SourceName: sourceName,
+		SourceId:   sourceId,
+	}
+
+	game.GameId = generateGameId(dateStart.Year(), gameNumber)
+
+	return game
+}
+
+func generateGameId(year, gameNumber int) string {
+	// yeargameNumber(00-padded)
+	return fmt.Sprintf("%d%03d", year, gameNumber)
+}
+
+type GameType string
+
+const (
+	GameTypeRegular           GameType = "regular"
+	GameTypeDivisionSemiFinal GameType = "division-semifinal"
+	GameTypeDivisionFinal     GameType = "division-final"
+	GameTypeGreyCup           GameType = "grey-cup"
+)
 
 type ByeWeeks struct {
 	Bc  []int `json:"bc"`
