@@ -7,7 +7,6 @@ import (
 
 type Schedule struct {
 	Year       int            `json:"year"`
-	Hash       string         `json:"hash"`
 	SourceName string         `json:"source_name"`
 	Games      []ScheduleGame `json:"games"`
 	// ByeWeeks   ByeWeeks       `json:"bye_weeks"`
