@@ -21,8 +21,8 @@ type ScheduleGame struct {
 	GameNumber int       `json:"game_number"`
 	WeekNumber int       `json:"week_number"`
 	GameType   GameType  `json:"game_type"`
-	AwayAbbr   string    `json:"away_abbr"`
-	HomeAbbr   string    `json:"home_abbr"`
+	Away       Team      `json:"away"`
+	Home       Team      `json:"home"`
 }
 
 func CreateScheduleGame(
@@ -30,8 +30,8 @@ func CreateScheduleGame(
 	gameNumber int,
 	weekNumber int,
 	gameType GameType,
-	awayAbbr string,
-	homeAbbr string,
+	away Team,
+	home Team,
 	sourceName string,
 	sourceId string,
 ) ScheduleGame {
@@ -40,8 +40,8 @@ func CreateScheduleGame(
 		GameNumber: gameNumber,
 		WeekNumber: weekNumber,
 		GameType:   gameType,
-		AwayAbbr:   awayAbbr,
-		HomeAbbr:   homeAbbr,
+		Away:       away,
+		Home:       home,
 		SourceName: sourceName,
 		SourceId:   sourceId,
 	}
@@ -59,6 +59,7 @@ func generateGameId(year, gameNumber int) string {
 type GameType string
 
 const (
+	GameTypePreseason         GameType = "preseason"
 	GameTypeRegular           GameType = "regular"
 	GameTypeDivisionSemiFinal GameType = "division-semifinal"
 	GameTypeDivisionFinal     GameType = "division-final"
