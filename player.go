@@ -2,6 +2,7 @@ package domain
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"time"
 
@@ -95,8 +96,16 @@ func CreatePlayer(
 }
 
 func computeId(firstName, lastName string, birthDate time.Time) (string, error) {
-	if firstName == "" || lastName == "" || birthDate.IsZero() {
-		return "", fmt.Errorf("firstName, lastName and birthDate are required")
+	if firstName == "" {
+		return "", errors.New("first name cannot be empty")
+	}
+
+	if lastName == "" {
+		return "", errors.New("last name cannot be empty")
+	}
+
+	if birthDate.IsZero() {
+		return "", errors.New("birth date cannot be empty")
 	}
 
 	birthDateUnix := int(birthDate.Unix())
