@@ -3,6 +3,7 @@ package domain
 import (
 	"crypto/md5"
 	"encoding/hex"
+	"fmt"
 	"regexp"
 	"strings"
 )
@@ -24,4 +25,9 @@ func nameSlug(firstName string, lastName string) string {
 	slug = cleanString(slug)
 
 	return strings.ToLower(slug)
+}
+
+func generateGameId(year, gameNumber int) string {
+	// yeargameNumber(00-padded)
+	return fmt.Sprintf("%d%03d", year, gameNumber)
 }

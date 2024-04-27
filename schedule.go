@@ -1,7 +1,6 @@
 package domain
 
 import (
-	"fmt"
 	"time"
 )
 
@@ -48,11 +47,6 @@ func CreateScheduleGame(
 	game.GameId = generateGameId(dateStart.Year(), gameNumber)
 
 	return game
-}
-
-func generateGameId(year, gameNumber int) string {
-	// yeargameNumber(00-padded)
-	return fmt.Sprintf("%d%03d", year, gameNumber)
 }
 
 type GameType string
