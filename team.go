@@ -1,9 +1,9 @@
 package domain
 
 type Team struct {
-	City string
-	Name string
-	Abbr string
+	Location string `json:"location"`
+	Name     string `json:"name"`
+	Abbr     string `json:"abbr"`
 }
 
 func TeamFromAbbr(abbr string) Team {
@@ -37,80 +37,80 @@ func (t Team) IsFreeAgent() bool {
 
 func TeamFreeAgents() Team {
 	return Team{
-		City: "Free agents",
-		Name: "Free agents",
-		Abbr: "FA",
+		Location: "Free agents",
+		Name:     "Free agents",
+		Abbr:     "FA",
 	}
 }
 
 func TeamBC() Team {
 	return Team{
-		City: "BC",
-		Name: "Lions",
-		Abbr: "BC",
+		Location: "BC",
+		Name:     "Lions",
+		Abbr:     "BC",
 	}
 }
 
 func TeamCGY() Team {
 	return Team{
-		City: "Calgary",
-		Name: "Stampeders",
-		Abbr: "CGY",
+		Location: "Calgary",
+		Name:     "Stampeders",
+		Abbr:     "CGY",
 	}
 }
 
 func TeamEDM() Team {
 	return Team{
-		City: "Edmonton",
-		Name: "Elks",
-		Abbr: "EDM",
+		Location: "Edmonton",
+		Name:     "Elks",
+		Abbr:     "EDM",
 	}
 }
 
 func TeamSSK() Team {
 	return Team{
-		City: "Saskatchewan",
-		Name: "Roughriders",
-		Abbr: "SSK",
+		Location: "Saskatchewan",
+		Name:     "Roughriders",
+		Abbr:     "SSK",
 	}
 }
 
 func TeamWPG() Team {
 	return Team{
-		City: "Winnipeg",
-		Name: "Blue Bombers",
-		Abbr: "WPG",
+		Location: "Winnipeg",
+		Name:     "Blue Bombers",
+		Abbr:     "WPG",
 	}
 }
 
 func TeamHAM() Team {
 	return Team{
-		City: "Hamilton",
-		Name: "Tiger-Cats",
-		Abbr: "HAM",
+		Location: "Hamilton",
+		Name:     "Tiger-Cats",
+		Abbr:     "HAM",
 	}
 }
 
 func TeamTOR() Team {
 	return Team{
-		City: "Toronto",
-		Name: "Argonauts",
-		Abbr: "TOR",
+		Location: "Toronto",
+		Name:     "Argonauts",
+		Abbr:     "TOR",
 	}
 }
 
 func TeamOTT() Team {
 	return Team{
-		City: "Ottawa",
-		Name: "REDBLACKS",
-		Abbr: "OTT",
+		Location: "Ottawa",
+		Name:     "REDBLACKS",
+		Abbr:     "OTT",
 	}
 }
 
 func TeamMTL() Team {
 	return Team{
-		City: "Montreal",
-		Name: "Alouettes",
-		Abbr: "MTL",
+		Location: "Montreal",
+		Name:     "Alouettes",
+		Abbr:     "MTL",
 	}
 }

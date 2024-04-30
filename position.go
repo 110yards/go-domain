@@ -3,8 +3,8 @@ package domain
 import "strings"
 
 type Position struct {
-	Id   string
-	Name string
+	Id   string `json:"id"`
+	Name string `json:"name"`
 }
 
 func PositionFromId(id string) Position {
