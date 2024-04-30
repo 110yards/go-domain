@@ -5,10 +5,10 @@ import (
 )
 
 type Schedule struct {
-	Year       int            `json:"year"`
-	SourceName string         `json:"source_name"`
-	Games      []ScheduleGame `json:"games"`
-	// ByeWeeks   ByeWeeks       `json:"bye_weeks"`
+	Year        int            `json:"year"`
+	DateUpdated time.Time      `json:"date_updated"`
+	SourceName  string         `json:"source_name"`
+	Games       []ScheduleGame `json:"games"`
 }
 
 type ScheduleGame struct {

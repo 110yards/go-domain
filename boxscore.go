@@ -4,6 +4,7 @@ import "time"
 
 type Boxscore struct {
 	GameId       string                `json:"game_id"`
+	DateUpdated  time.Time             `json:"date_updated"`
 	SourceGameId string                `json:"source_game_id"`
 	SourceName   string                `json:"source_name"`
 	DateStart    time.Time             `json:"date_start"`

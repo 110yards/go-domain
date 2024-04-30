@@ -11,6 +11,7 @@ import (
 
 type Player struct {
 	PlayerId             string        `json:"player_id"`
+	DateUpdated          time.Time     `json:"date_updated"`
 	FirstName            string        `json:"first_name"`
 	LastName             string        `json:"last_name"`
 	FullName             string        `json:"full_name"`
