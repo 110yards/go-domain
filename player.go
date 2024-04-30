@@ -70,6 +70,7 @@ func CreatePlayer(
 
 	player := Player{
 		PlayerId:             playerId,
+		DateUpdated:          time.Now(),
 		FirstName:            firstName,
 		LastName:             lastName,
 		FullName:             fmt.Sprintf("%s %s", firstName, lastName),

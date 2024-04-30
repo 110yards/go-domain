@@ -19,6 +19,36 @@ type Boxscore struct {
 	} `json:"team_stats"`
 }
 
+func CreateBoxScore(
+	gameId string,
+	sourceGameId string,
+	sourceName string,
+	dateStart time.Time,
+	status GameStatus,
+	score LineScores,
+	teams BoxScoreTeams,
+	playerStats []BoxscorePlayerStats,
+	teamStats []struct {
+		Away TeamStats `json:"away"`
+		Home TeamStats `json:"home"`
+	},
+	attendance int,
+) Boxscore {
+	return Boxscore{
+		GameId:       gameId,
+		DateUpdated:  time.Now(),
+		SourceGameId: sourceGameId,
+		SourceName:   sourceName,
+		DateStart:    dateStart,
+		Status:       status,
+		Score:        score,
+		Teams:        teams,
+		PlayerStats:  playerStats,
+		TeamStats:    teamStats,
+		Attendance:   attendance,
+	}
+}
+
 type BoxScoreTeams struct {
 	Away Team `json:"away"`
 	Home Team `json:"home"`

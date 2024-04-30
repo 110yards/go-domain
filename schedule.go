@@ -11,6 +11,15 @@ type Schedule struct {
 	Games       []ScheduleGame `json:"games"`
 }
 
+func CreateSchedule(year int, sourceName string) Schedule {
+	return Schedule{
+		Year:        year,
+		DateUpdated: time.Now(),
+		SourceName:  sourceName,
+		Games:       []ScheduleGame{},
+	}
+}
+
 type ScheduleGame struct {
 	GameId     string    `json:"game_id"`
 	SourceName string    `json:"source_name"`
