@@ -20,7 +20,7 @@ type Boxscore struct {
 }
 
 func CreateBoxScore(
-	year int,
+	gameId string,
 	gameNumber int,
 	sourceGameId string,
 	sourceName string,
@@ -36,7 +36,7 @@ func CreateBoxScore(
 	attendance int,
 ) Boxscore {
 	return Boxscore{
-		GameId:       generateGameId(year, gameNumber),
+		GameId:       gameId,
 		DateUpdated:  time.Now(),
 		SourceGameId: sourceGameId,
 		SourceName:   sourceName,

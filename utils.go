@@ -27,7 +27,7 @@ func nameSlug(firstName string, lastName string) string {
 	return strings.ToLower(slug)
 }
 
-func generateGameId(year, gameNumber int) string {
+func GenerateGameId(year, gameNumber int) string {
 	// yeargameNumber(00-padded)
 	return fmt.Sprintf("%d%03d", year, gameNumber)
 }

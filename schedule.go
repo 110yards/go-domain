@@ -33,6 +33,7 @@ type ScheduleGame struct {
 }
 
 func CreateScheduleGame(
+	gameId string,
 	dateStart time.Time,
 	gameNumber int,
 	weekNumber int,
@@ -43,6 +44,7 @@ func CreateScheduleGame(
 	sourceId string,
 ) ScheduleGame {
 	game := ScheduleGame{
+		GameId:     gameId,
 		DateStart:  dateStart,
 		GameNumber: gameNumber,
 		WeekNumber: weekNumber,
@@ -52,8 +54,6 @@ func CreateScheduleGame(
 		SourceName: sourceName,
 		SourceId:   sourceId,
 	}
-
-	game.GameId = generateGameId(dateStart.Year(), gameNumber)
 
 	return game
 }
