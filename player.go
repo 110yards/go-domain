@@ -10,28 +10,28 @@ import (
 )
 
 type Player struct {
-	PlayerId             string        `json:"player_id"`
-	DateUpdated          time.Time     `json:"date_updated"`
-	FirstName            string        `json:"first_name"`
-	LastName             string        `json:"last_name"`
-	FullName             string        `json:"full_name"`
-	BirthDate            time.Time     `json:"birth_date"`
-	BirthPlace           string        `json:"birth_place"`
-	Height               string        `json:"height"`
-	Weight               int           `json:"weight"`
-	CanadianPlayer       bool          `json:"canadian_player"`
-	Position             Position      `json:"position"`
-	Team                 Team          `json:"team"`
-	IsFreeAgent          bool          `json:"is_free_agent"`
-	AlternateComputedIds []string      `json:"alternate_computed_ids"`
-	Uniform              string        `json:"uniform"`
-	School               string        `json:"school"`
-	Seasons              []int         `json:"seasons"`
-	InjuryStatus         InjuryDetails `json:"injury_status"`
-	SourceName           string        `json:"source_name"`
-	SourceId             string        `json:"source_id"`
-	LastUpdated          time.Time     `json:"last_updated"`
-	Hash                 string        `json:"hash"`
+	PlayerId             string         `json:"player_id"`
+	DateUpdated          time.Time      `json:"date_updated"`
+	FirstName            string         `json:"first_name"`
+	LastName             string         `json:"last_name"`
+	FullName             string         `json:"full_name"`
+	BirthDate            time.Time      `json:"birth_date"`
+	BirthPlace           string         `json:"birth_place"`
+	Height               string         `json:"height"`
+	Weight               int            `json:"weight"`
+	CanadianPlayer       bool           `json:"canadian_player"`
+	Position             Position       `json:"position"`
+	Team                 Team           `json:"team"`
+	IsFreeAgent          bool           `json:"is_free_agent"`
+	AlternateComputedIds []string       `json:"alternate_computed_ids"`
+	Uniform              string         `json:"uniform"`
+	School               string         `json:"school"`
+	Seasons              []int          `json:"seasons"`
+	InjuryStatus         *InjuryDetails `json:"injury_status"`
+	SourceName           string         `json:"source_name"`
+	SourceId             string         `json:"source_id"`
+	LastUpdated          time.Time      `json:"last_updated"`
+	Hash                 string         `json:"hash"`
 }
 
 type PlayerStub struct {
@@ -59,7 +59,7 @@ func CreatePlayer(
 	sourceName string,
 	sourceId string,
 	season int,
-	injuryDetails InjuryDetails,
+	injuryDetails *InjuryDetails,
 ) (Player, error) {
 
 	playerId, err := computeId(firstName, lastName, birthDate)
