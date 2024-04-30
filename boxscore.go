@@ -21,7 +21,6 @@ type Boxscore struct {
 
 func CreateBoxScore(
 	gameId string,
-	gameNumber int,
 	sourceGameId string,
 	sourceName string,
 	dateStart time.Time,
