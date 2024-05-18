@@ -10,7 +10,7 @@ import (
 type Boxscore struct {
 	GameId       string                `json:"game_id"`
 	Hash         string                `json:"hash"`
-	LastUpdated  time.Time             `json:"last_updated"`
+	DateUpdated  time.Time             `json:"date_updated"`
 	SourceGameId string                `json:"source_game_id"`
 	SourceName   string                `json:"source_name"`
 	DateStart    time.Time             `json:"date_start"`
@@ -42,7 +42,7 @@ func CreateBoxScore(
 ) Boxscore {
 	boxscore := Boxscore{
 		GameId:       gameId,
-		LastUpdated:  time.Now(),
+		DateUpdated:  time.Now(),
 		SourceGameId: sourceGameId,
 		SourceName:   sourceName,
 		DateStart:    dateStart,
@@ -88,7 +88,7 @@ type BoxscorePlayerStats struct {
 func (b *Boxscore) UpdateHash() error {
 	// don't include last update time in hash calculation
 	copy := *b
-	copy.LastUpdated = time.Time{}
+	copy.DateUpdated = time.Time{}
 
 	// marshal p to json
 	j, err := json.Marshal(copy)

@@ -30,7 +30,6 @@ type Player struct {
 	InjuryStatus         *InjuryDetails `json:"injury_status"`
 	SourceName           string         `json:"source_name"`
 	SourceId             string         `json:"source_id"`
-	LastUpdated          time.Time      `json:"last_updated"`
 	Hash                 string         `json:"hash"`
 }
 
@@ -89,7 +88,6 @@ func CreatePlayer(
 		InjuryStatus:         injuryDetails,
 		SourceName:           sourceName,
 		SourceId:             sourceId,
-		LastUpdated:          time.Now(),
 	}
 
 	player.UpdateHash()
@@ -121,7 +119,7 @@ func computeId(firstName, lastName string, birthDate time.Time) (string, error) 
 func (p *Player) UpdateHash() error {
 	// don't include last update time in hash calculation
 	copy := *p
-	copy.LastUpdated = time.Time{}
+	copy.DateUpdated = time.Time{}
 
 	// marshal p to json
 	j, err := json.Marshal(copy)
