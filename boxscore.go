@@ -1,10 +1,16 @@
 package domain
 
-import "time"
+import (
+	"encoding/json"
+	"time"
+
+	"110yards.ca/libs/go/core/logger"
+)
 
 type Boxscore struct {
 	GameId       string                `json:"game_id"`
-	DateUpdated  time.Time             `json:"date_updated"`
+	Hash         string                `json:"hash"`
+	LastUpdated  time.Time             `json:"last_updated"`
 	SourceGameId string                `json:"source_game_id"`
 	SourceName   string                `json:"source_name"`
 	DateStart    time.Time             `json:"date_start"`
@@ -34,9 +40,9 @@ func CreateBoxScore(
 	},
 	attendance int,
 ) Boxscore {
-	return Boxscore{
+	boxscore := Boxscore{
 		GameId:       gameId,
-		DateUpdated:  time.Now(),
+		LastUpdated:  time.Now(),
 		SourceGameId: sourceGameId,
 		SourceName:   sourceName,
 		DateStart:    dateStart,
@@ -47,6 +53,10 @@ func CreateBoxScore(
 		TeamStats:    teamStats,
 		Attendance:   attendance,
 	}
+
+	boxscore.UpdateHash()
+
+	return boxscore
 }
 
 type BoxScoreTeams struct {
@@ -73,4 +83,22 @@ type BoxscorePlayerStats struct {
 	SourcePlayerId string      `json:"source_player_id"`
 	Name           string      `json:"name"`
 	Stats          PlayerStats `json:"stats"`
+}
+
+func (b *Boxscore) UpdateHash() error {
+	// don't include last update time in hash calculation
+	copy := *b
+	copy.LastUpdated = time.Time{}
+
+	// marshal p to json
+	j, err := json.Marshal(copy)
+
+	if err != nil {
+		logger.Errorf("Error while marshalling boxscore: %s", err.Error())
+		return err
+	}
+
+	// calculate hash
+	b.Hash = calculateHash(string(j))
+	return nil
 }
