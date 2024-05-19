@@ -27,7 +27,6 @@ type Player struct {
 	InjuryStatus         *InjuryDetails `json:"injury_status"`
 	SourceName           string         `json:"source_name"`
 	SourceId             string         `json:"source_id"`
-	Hash                 string         `json:"hash"`
 }
 
 type PlayerStub struct {
