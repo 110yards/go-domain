@@ -1,12 +1,9 @@
 package domain
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
 	"time"
-
-	"110yards.ca/libs/go/core/logger"
 )
 
 type Player struct {
@@ -43,7 +40,6 @@ type PlayerStub struct {
 	SourceName           string    `json:"source_name"`
 	SourceId             string    `json:"source_id"`
 	AlternateComputedIds []string  `json:"alternate_computed_ids"`
-	Hash                 string    `json:"hash"`
 }
 
 func CreatePlayer(
@@ -90,8 +86,6 @@ func CreatePlayer(
 		SourceId:             sourceId,
 	}
 
-	player.UpdateHash()
-
 	return player, nil
 }
 
@@ -113,23 +107,5 @@ func computeId(firstName, lastName string, birthDate time.Time) (string, error) 
 
 	idClear := fmt.Sprintf("%s-%d", nameSlug, birthDateUnix)
 
-	return calculateHash(idClear), nil
-}
-
-func (p *Player) UpdateHash() error {
-	// don't include last update time in hash calculation
-	copy := *p
-	copy.DateUpdated = time.Time{}
-
-	// marshal p to json
-	j, err := json.Marshal(copy)
-
-	if err != nil {
-		logger.Errorf("Error while marshalling player: %s", err.Error())
-		return err
-	}
-
-	// calculate hash
-	p.Hash = calculateHash(string(j))
-	return nil
+	return HashString(idClear), nil
 }
