@@ -14,6 +14,7 @@ const (
 type GameResult struct {
 	GameId      string     `json:"game_id"`
 	Year        int        `json:"year"`
+	Week        int        `json:"week"`
 	DateStart   time.Time  `json:"date_start"`
 	GameNumber  int        `json:"game_number"`
 	WeekNumber  int        `json:"week_number"`

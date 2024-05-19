@@ -23,7 +23,7 @@ type Player struct {
 	AlternateComputedIds []string       `json:"alternate_computed_ids"`
 	Uniform              string         `json:"uniform"`
 	School               string         `json:"school"`
-	Seasons              []int          `json:"seasons"`
+	Season               int            `json:"season"`
 	InjuryStatus         *InjuryDetails `json:"injury_status"`
 	SourceName           string         `json:"source_name"`
 	SourceId             string         `json:"source_id"`
@@ -79,7 +79,7 @@ func CreatePlayer(
 		AlternateComputedIds: []string{},
 		Uniform:              uniform,
 		School:               school,
-		Seasons:              []int{season},
+		Season:               season,
 		InjuryStatus:         injuryDetails,
 		SourceName:           sourceName,
 		SourceId:             sourceId,
