@@ -6,7 +6,7 @@ import (
 
 type Boxscore struct {
 	GameId       string                `json:"game_id"`
-	Year         string                `json:"year"`
+	Year         int                   `json:"year"`
 	Week         int                   `json:"week"`
 	DateUpdated  time.Time             `json:"date_updated"`
 	SourceGameId string                `json:"source_game_id"`
