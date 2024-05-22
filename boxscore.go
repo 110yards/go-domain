@@ -76,7 +76,12 @@ type Score struct {
 }
 
 type BoxscorePlayerStats struct {
+	PlayerId       string      `json:"player_id"`
+	GameId         string      `json:"game_id"`
+	SourceName     string      `json:"source_name"`
 	SourcePlayerId string      `json:"source_player_id"`
+	SourceGameId   string      `json:"source_game_id"`
 	Name           string      `json:"name"`
 	Stats          PlayerStats `json:"stats"`
+	DateUpdated    time.Time   `json:"date_updated"`
 }
