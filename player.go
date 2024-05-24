@@ -56,7 +56,7 @@ func CreatePlayer(
 	injuryDetails *InjuryDetails,
 ) (Player, error) {
 
-	playerId, err := computeId(firstName, lastName, birthDate)
+	playerId, err := ComputePlayerId(firstName, lastName, birthDate)
 
 	if err != nil {
 		return Player{}, err
@@ -88,7 +88,7 @@ func CreatePlayer(
 	return player, nil
 }
 
-func computeId(firstName, lastName string, birthDate time.Time) (string, error) {
+func ComputePlayerId(firstName, lastName string, birthDate time.Time) (string, error) {
 	if firstName == "" {
 		return "", errors.New("first name cannot be empty")
 	}
