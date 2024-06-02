@@ -28,7 +28,6 @@ type ScheduleGame struct {
 	SourceId   string    `json:"source_id"`
 	DateStart  time.Time `json:"date_start"`
 	GameNumber int       `json:"game_number"`
-	WeekNumber int       `json:"week_number"`
 	GameType   GameType  `json:"game_type"`
 	Away       Team      `json:"away"`
 	Home       Team      `json:"home"`
@@ -40,7 +39,6 @@ func CreateScheduleGame(
 	gameId string,
 	dateStart time.Time,
 	gameNumber int,
-	weekNumber int,
 	gameType GameType,
 	away Team,
 	home Team,
@@ -53,7 +51,6 @@ func CreateScheduleGame(
 		GameId:     gameId,
 		DateStart:  dateStart,
 		GameNumber: gameNumber,
-		WeekNumber: weekNumber,
 		GameType:   gameType,
 		Away:       away,
 		Home:       home,
