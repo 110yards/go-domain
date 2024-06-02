@@ -5,23 +5,23 @@ import "time"
 type Scoreboard struct {
 	Year        int       `json:"year"`
 	Week        int       `json:"week"`
-	LastUpdated time.Time `json:"last_updated"`
+	DateUpdated time.Time `json:"date_updated"`
 	Games       []ScoreboardGame
 }
 
 func CreateScoreboard(year, week int, games []ScoreboardGame) Scoreboard {
-	var lastUpdated time.Time
+	var dateUpdated time.Time
 
 	for _, game := range games {
-		if game.LastUpdated.After(lastUpdated) {
-			lastUpdated = game.LastUpdated
+		if game.DateUpdated.After(dateUpdated) {
+			dateUpdated = game.DateUpdated
 		}
 	}
 
 	return Scoreboard{
 		Year:        year,
 		Week:        week,
-		LastUpdated: lastUpdated,
+		DateUpdated: dateUpdated,
 		Games:       games,
 	}
 }
@@ -30,7 +30,7 @@ type ScoreboardGame struct {
 	Year        int
 	Week        int
 	GameId      string     `json:"game_id"`
-	LastUpdated time.Time  `json:"last_updated"`
+	DateUpdated time.Time  `json:"date_updated"`
 	Away        Team       `json:"away"`
 	Home        Team       `json:"home"`
 	AwayScore   int        `json:"away_score"`
