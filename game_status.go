@@ -45,6 +45,7 @@ func CreateGameStatus(statusId GameStatusId) GameStatus {
 		return CreateGameStatusInProgress(1, 0, 0, 1, 10)
 	}
 
+	// "in progress" is handled above, all other status have not started by definition.
 	hasStarted := statusId == GameStatusId_Final
 
 	return GameStatus{

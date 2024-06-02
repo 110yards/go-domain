@@ -3,10 +3,10 @@ package domain
 import "time"
 
 type Scoreboard struct {
-	Year        int       `json:"year"`
-	Week        int       `json:"week"`
-	DateUpdated time.Time `json:"date_updated"`
-	Games       []ScoreboardGame
+	Year        int              `json:"year"`
+	Week        int              `json:"week"`
+	DateUpdated time.Time        `json:"date_updated"`
+	Games       []ScoreboardGame `json:"games"`
 }
 
 func CreateScoreboard(year, week int, games []ScoreboardGame) Scoreboard {
