@@ -30,6 +30,7 @@ type ScoreboardGame struct {
 	Year        int        `json:"year"`
 	Week        int        `json:"week"`
 	GameId      string     `json:"game_id"`
+	DateStart   time.Time  `json:"date_start"`
 	DateUpdated time.Time  `json:"date_updated"`
 	Away        Team       `json:"away"`
 	Home        Team       `json:"home"`
