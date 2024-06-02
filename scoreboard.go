@@ -27,8 +27,8 @@ func CreateScoreboard(year, week int, games []ScoreboardGame) Scoreboard {
 }
 
 type ScoreboardGame struct {
-	Year        int
-	Week        int
+	Year        int        `json:"year"`
+	Week        int        `json:"week"`
 	GameId      string     `json:"game_id"`
 	DateUpdated time.Time  `json:"date_updated"`
 	Away        Team       `json:"away"`
