@@ -81,6 +81,8 @@ type BoxscorePlayerStats struct {
 	SourceName     string      `json:"source_name"`
 	SourcePlayerId string      `json:"source_player_id"`
 	SourceGameId   string      `json:"source_game_id"`
+	Team           Team        `json:"team"`
+	Opponent       Team        `json:"opponent"`
 	Name           string      `json:"name"`
 	Stats          PlayerStats `json:"stats"`
 	DateUpdated    time.Time   `json:"date_updated"`
