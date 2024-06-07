@@ -5,18 +5,17 @@ import (
 )
 
 type Boxscore struct {
-	GameId       string                `json:"game_id"`
-	Year         int                   `json:"year"`
-	Week         int                   `json:"week"`
-	DateUpdated  time.Time             `json:"date_updated"`
-	SourceGameId string                `json:"source_game_id"`
-	SourceName   string                `json:"source_name"`
-	DateStart    time.Time             `json:"date_start"`
-	Status       GameStatus            `json:"status"`
-	Score        LineScores            `json:"score"`
-	Attendance   int                   `json:"attendance"`
-	Teams        BoxScoreTeams         `json:"teams"`
-	PlayerStats  []BoxscorePlayerStats `json:"player_stats"`
+	GameId       string        `json:"game_id"`
+	Year         int           `json:"year"`
+	Week         int           `json:"week"`
+	DateUpdated  time.Time     `json:"date_updated"`
+	SourceGameId string        `json:"source_game_id"`
+	SourceName   string        `json:"source_name"`
+	DateStart    time.Time     `json:"date_start"`
+	Status       GameStatus    `json:"status"`
+	Score        LineScores    `json:"score"`
+	Attendance   int           `json:"attendance"`
+	Teams        BoxScoreTeams `json:"teams"`
 	TeamStats    []struct {
 		Away TeamStats `json:"away"`
 		Home TeamStats `json:"home"`
@@ -31,7 +30,6 @@ func CreateBoxScore(
 	status GameStatus,
 	score LineScores,
 	teams BoxScoreTeams,
-	playerStats []BoxscorePlayerStats,
 	teamStats []struct {
 		Away TeamStats `json:"away"`
 		Home TeamStats `json:"home"`
@@ -47,7 +45,6 @@ func CreateBoxScore(
 		Status:       status,
 		Score:        score,
 		Teams:        teams,
-		PlayerStats:  playerStats,
 		TeamStats:    teamStats,
 		Attendance:   attendance,
 	}
@@ -56,8 +53,10 @@ func CreateBoxScore(
 }
 
 type BoxScoreTeams struct {
-	Away Team `json:"away"`
-	Home Team `json:"home"`
+	Away      Team                  `json:"away"`
+	AwayStats []BoxscorePlayerStats `json:"away_stats"`
+	Home      Team                  `json:"home"`
+	HomeStats []BoxscorePlayerStats `json:"home_stats"`
 }
 
 type LineScores struct {
